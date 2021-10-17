@@ -1,0 +1,26 @@
+<div class="container mb-4"></div>
+    <div class="row justify-content-md-center"></div>
+        {% if user_is_anonym %}
+        <div class="col-md-auto p-2">
+            <a class="nav-link btn btn-primary" href="social/login/github-oauth2">Авторизоваться <span class="sr-only">(current)</span></a>
+        </div>
+        <div class="col-md-auto mb-4 p-4" style="height: 50px;">
+          <div class="p-3 mb-2 border border-dark bg-light text-dark text-center rounded-pill">Здравствуйте {{ name }}</div>
+        </div>
+        {% else %}
+        <div class="col-md-auto p-2">
+            <a class="nav-link btn btn-danger" href="logout/">Выход <span class="sr-only">(current)</span></a>
+        </div>
+        <div class="col-md-auto mb-4 p-4" style="height: 50px;">
+          <div class="p-3 mb-2 border border-dark bg-success text-white text-center rounded-pill">Здравствуйте {{ name }}</div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="container m-2"></div>
+    <div class="row justify-content-md-center"></div>
+        <div class="col-md-auto" style="height: 50px;">
+            <div class="p-1"></div>
+        </div>
+    </div>
+</div>

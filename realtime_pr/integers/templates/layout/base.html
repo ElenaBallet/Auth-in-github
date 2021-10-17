@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type"
+        content="text/html; charset=utf-8">
+        <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Главная{% endblock %} - Тест задание ВКонтакте</title>
+        
+   
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="wrapper-content">
+                {% include 'layout/navbar.html' %}
+                
+                {% block content %}
+                {% endblock %}
+
+            </div>
+
+        </div>
+    </body>
+</html>

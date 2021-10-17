@@ -3,15 +3,51 @@
     <head>
         <title>{% block title %}{% endblock title %}</title>
         {% block css %} {% endblock css %}
+        <style>
+        .btn {
+            display: inline-block; /* Строчно-блочный элемент */
+            background: #8C959D; /* Серый цвет фона */
+            color: #fff; /* Белый цвет текста */
+            padding: 1rem 1.5rem; /* Поля вокруг текста */
+            text-decoration: none; /* Убираем подчёркивание */
+            border-radius: 3px; /* Скругляем уголки */
+        }
+        </style>
     </head>
     <body>
-        <h1> Real-time App</h1>
+        <h1> Real-Time App</h1>
         <hr/>
         {% if user.is_authenticated %}
         You are signed in as <strong>{{ user.username }}</strong> /
         <a href="{% url 'logout' %}">logout</a>
+        <hr/>         
+        <body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 mx-auto mt-5">
+                        <strong><p style="color:#0000ff"> Генерация чисел </p> </strong>
+                        <div id="app" </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+
+        <script>
+
+            var socket = new WebSocket('ws://localhost:8000/ws/some_url/');
+
+            socket.onmessage = function(event){
+                var data = JSON.parse(event.data);
+                console.log(data);
+                document.querySelector('#app').innerText = data.message;
+            }
+
+        </script>    
+
         {% else %}
-        <a href="{% url 'login' %}">login</a> /
+        <h3>Введите логин для Github</h3>
+        <a href="{% url 'login' %}"></a>
+        <a href="{% url 'social:begin' 'github' %}" class="btn">Аторизоваться</a>
         {% endif %}
         <hr>
 
